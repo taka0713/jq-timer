@@ -1,12 +1,10 @@
-HTML定型文
-
 <!doctype html>
 
 <html lang=“ja”>
 <head>
   <meta charset="utf-8">
 
-  <title>The HTML5 Herald</title>
+  <title>timer</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
 
@@ -21,21 +19,19 @@ HTML定型文
     <div class="wrapper"></div>
   </header>
   <div class="container">
-    <div class="main">main</div>
+    <div class="box"><h1>タイマー</h1>
+      <label><input type="text" oninput="value = value.replace(/[０-９]/g,s => String.fromCharCode(s.charCodeAt(0) - 65248)).replace(/\D/g,'');" value="0" class="boxin" id="minutes"/>分</label>
+      <label><input type="text" oninput="value = value.replace(/[０-９]/g,s => String.fromCharCode(s.charCodeAt(0) - 65248)).replace(/\D/g,'');" value="0" class="boxin" id="seconds"/>秒</label>
+      
+      <p>ボタン</p>
+      <div id="button">
+        <button type="button" id="start">スタート</button>
+        <button type="button" id="stop">ストップ</button>
+        <button type="button" id="reset">リセット</button>
+      </div>
+    </div>
   </div>
   
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
-レスポンシブ対応時、metaの所へ入れる
-
-１．画面拡大できないようにする場合
-
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-
-２．画面拡大ができるようにする場合
-
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
