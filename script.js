@@ -1,19 +1,26 @@
 $(function(){
+
     let timer = null;
 
     $('#start').click(function(){
-        let minutes = $('#minutes').val();
+
+        let minutes = Number($('#minutes').val());
         let seconds = Number($('#seconds').val());
-        setInterval(function(){
-            $('#seconds').val(seconds -1);
-            seconds = seconds -1;
-            
-            if(seconds === 0){
-              alert('終了です');
+        timer = setInterval(function(){
+            seconds = seconds - 1;
+            $('#seconds').val(seconds);
+            if(seconds <= 0){
+                $('#seconds').val(0);
             }
-            if(seconds === 0 && minutes > 0){
-                minutes -1;
+            if(seconds < 0 && minutes > 0){
+                minutes = minutes - 1;
                 seconds = 59;
+                $('#minutes').val(minutes);
+                $('#seconds').val(59);
+            }
+            
+            if(seconds === 0 && minutes === 0){
+                alert('終了です');
             }
         },1000);
 
@@ -23,9 +30,11 @@ $(function(){
         clearInterval(timer);
         
     });
-
+    
     $('#reset').click(function(){
-        
-        
+        clearInterval(timer);
+        $('#minutes').val(0);
+        $('#seconds').val(0);
+
     });
 });
